@@ -1,12 +1,12 @@
 @font-face {
   font-family: myFonts;
-  src: url(/dist/Fonts/agent-orange/AgentOrange.ttf);
+  src: url(/Fonts/agent-orange/AgentOrange.ttf);
 
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-image: url(/dist/image/background-img.jpg);
+  background-image: url(/image/background-img.jpg);
   background-repeat: no-repeat;
   /* Prevents the image from repeating */
   background-size: cover;

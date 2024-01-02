@@ -120,9 +120,7 @@ function handleEditTodo(todo, todoDiv) {
       "#importance"
     ).textContent = `Importance: ${todo.importance}`;
 
-    // Remove the form
-    // filterTodosByHeading(todoArray, getMainSectionHeading());
-    // appendTodoToDOM(todoArray);
+   appendTodoToDOM(todoArray);
     this.remove();
 
 
@@ -141,6 +139,7 @@ function handleEditTodo(todo, todoDiv) {
 function createEditForm(todo) {
   const editForm = document.createElement("form");
   // ... (create form fields with todo data)
+  console.log(todo);
   editForm.id = "edit-form";
   editForm.innerHTML = `
     <label for="title">Title:</label>
@@ -151,7 +150,7 @@ function createEditForm(todo) {
     <input type="date" id="dueDate" name="dueDate" value="${todo.dueDate}" required>
     <div class = 'importance'> Importance:
     <label for="low">
-    <input type="radio" id="low" name="importance" value="Low" required ${todo.importance === "Low" ? "checked" : ""}>
+    <input type="radio" id="low" name="importance" value="Low" required ${todo.importance.toLowerCase() === "low" ? "checked" : ""}>
 
       <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg

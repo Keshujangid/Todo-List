@@ -6,7 +6,6 @@ import { todoArray } from './ui.js';
 document.addEventListener('DOMContentLoaded', function() {
     // Set the initial heading
     document.querySelector('.main-section-heading').textContent = 'Inbox';
-    console.log(todoArray);
     appendTodoToDOM(todoArray);
     // Create the 'Add Todo' button
     createFormButton();

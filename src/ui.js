@@ -179,7 +179,7 @@ function formSubmissionEvent(form) {
 
     todoArray.push(todoData);
     appendTodoToDOM(todoArray);
-    console.log(todoArray);
+    // console.log(todoArray);
     form.reset();
     form.remove();
     document.getElementById("modal-background").style.display = "none";
@@ -278,9 +278,9 @@ function handleDeleteButtonClick(event) {
 function handleProjectSpanClick() {
   // Get the clicked project's name
   const projectName = this.textContent;
-  console.log(projectName)
+  // console.log(projectName)
   // Set the main section's heading to the project's name
-  document.querySelector(".main-section > h1").textContent = projectName;
+  document.querySelector(".top-section > h1").textContent = projectName;
 
 
   appendTodoToDOM(todoArray);
@@ -328,7 +328,7 @@ function handleFormSubmit(event) {
   this.parentNode.remove();
 
   // projectList.push(projectValue);
-  console.log(projectList);
+  // console.log(projectList);
 }
 
 export function addProject() {

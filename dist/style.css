@@ -1,11 +1,11 @@
 @font-face {
   font-family: myFonts;
-  src: url(../dist/Fonts/agent-orange/AgentOrange.ttf);
+  src: url(/dist/Fonts/agent-orange/AgentOrange.ttf);
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-image: url(../dist/image/abstract-shapes-background-free-vector.jpg);
+  background-image: url(/dist/image/background-img.jpg);
   background-repeat: no-repeat;
   /* Prevents the image from repeating */
   background-size: cover;
@@ -42,8 +42,10 @@ body {
 .side-bar {
   /* border: 1px solid black; */
   grid-row: 2;
-  background-color: #f8f9fa;
+  /* background-color: #f8f9fa; */
   padding: 20px;
+  border-right: 1px solid #dee2e6;
+  height: fit-content;
 }
 
 .list {
@@ -137,13 +139,6 @@ body {
   margin-bottom: 20px;
 }
 
-/* 
-.todo-box{
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-} */
 
 #modal-background {
   position: fixed;
@@ -190,6 +185,12 @@ body {
 .project>span {
   height: 100%;
 }
+
+.project>span:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+
 
 span>svg {
   height: -webkit-fill-available;
@@ -322,8 +323,8 @@ button[type="button"]:hover {
 
 .todo-div span {
   /* Due date and importance styling */
-  font-size: 0.8em;
-  color: #777;
+  font-size: 1rem;
+  color: #000000;
   margin-right: 10px;
 
 }

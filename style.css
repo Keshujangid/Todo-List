@@ -1,0 +1,502 @@
+@font-face {
+  font-family: myFonts;
+  src: url(/dist/Fonts/agent-orange/AgentOrange.ttf);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url(/dist/image/abstract-shapes-background-free-vector.jpg);
+  background-repeat: no-repeat;
+  /* Prevents the image from repeating */
+  background-size: cover;
+  /* Makes the image cover the entire body */
+  background-position: center;
+  /* Centers the image in the body */
+  background-attachment: fixed;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-gap: 20px;
+}
+
+.header {
+  grid-column: 1 / -1;
+  /* background-color: #f8f9fa; Light gray */
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.header h1 {
+  margin: 0;
+  color: #343a40;
+  /* Dark gray */
+  font-size: 2em;
+  font-family: myFonts;
+}
+
+.side-bar {
+  /* border: 1px solid black; */
+  grid-row: 2;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.list {
+
+  margin-bottom: 20px;
+}
+
+.list li {
+  display: flex;
+  list-style-type: none;
+  /* padding: 2px; */
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  height: 20px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+.list li>svg {
+  height: -webkit-fill-available;
+}
+
+.side-bar .list li:hover,
+.side-bar .list li>svg:hover {
+  color: #007bff;
+  /* Blue */
+  fill: #007bff;
+}
+
+.side-bar .project-heading {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.add-project-btn,
+.add-todo-btn,
+.create-form-button {
+  background-color: white;
+  color: black;
+  border-radius: 10em;
+  font-size: 17px;
+  font-weight: 600;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid black;
+  box-shadow: 0 0 0 0 black;
+}
+
+.add-project-btn:hover,
+.add-todo-btn:hover,
+.create-form-button:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+/* 
+.side-bar .add-project-btn:hover ,.create-form-button:hover {
+  background-color: #0056b3; Darker blue
+} */
+
+.main-section {
+  grid-row: 2;
+  /* flex-grow: 1; */
+  /* border: 1px solid black; */
+  padding: 20px;
+}
+
+
+
+.main-section .main-section-heading {
+  color: #343a40;
+  /* Dark gray */
+  font-size: 2em;
+}
+
+.main-section .todo-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 20px;
+  /* max-width: 450px; */
+  margin: 0 auto;
+}
+
+
+.project-list>div {
+  margin-bottom: 20px;
+}
+
+/* 
+.todo-box{
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+} */
+
+#modal-background {
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  display: none;
+  /* Hidden by default */
+}
+
+#todoForm,
+#edit-form {
+  background-color: #fefefe;
+  margin: 7% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: clamp(300px, 30%, 500px)
+    /* Could be more or less, depending on screen size */
+}
+
+.project {
+  height: 20px;
+  border: 1px solid silver;
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project>span {
+  height: 100%;
+}
+
+span>svg {
+  height: -webkit-fill-available;
+  width: -webkit-fill-available;
+}
+
+.importance {
+  /* position: relative; */
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+
+
+label>input[type="radio"] {
+  /* position: absolute; */
+  opacity: 0;
+  cursor: pointer;
+}
+
+label>input[type="radio"]:checked+svg>.cls-1 {
+  /* background-color: #2196F3; */
+  fill: #1b67b4;
+}
+
+label>input[type="radio"]+svg>.cls-1 {
+  /* background-color: #2196F3; */
+  fill: #000000;
+}
+
+form {
+  /* Overall form styling */
+  display: flex;
+  flex-direction: column;
+  width: --webkit-fill-available;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  /* General label styling */
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+  /* Ensure labels take full width */
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  /* Text input and textarea styling */
+  width: --webkit-fill-available;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+textarea {
+  /* Adjust height for textarea */
+  height: 100px;
+}
+
+input[type="radio"] {
+  /* Radio button styling */
+  margin-right: 5px;
+}
+
+input[type="submit"],
+button[type="button"] {
+  /* Button styling */
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  /* Green */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+button[type="button"]:hover {
+  /* Button hover effect */
+  background-color: #3e8e41;
+  /* Darker green */
+}
+
+#cancel {
+  /* Differentiate the Cancel button */
+  background-color: #d33;
+  /* Red */
+  margin-left: 10px;
+}
+
+
+.todo-div {
+  /* General styling for the todo container */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  border: 1px solid #757575;
+  border-radius: 24px;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  width: 280px;
+  justify-self: center;
+  height: fit-content;
+}
+
+.todo-div h2 {
+  /* Title styling */
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+
+.todo-div p {
+  /* Notes styling */
+  margin-bottom: 10px;
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.todo-div span {
+  /* Due date and importance styling */
+  font-size: 0.8em;
+  color: #777;
+  margin-right: 10px;
+
+}
+
+/* .todo-div button {
+  Button styling
+  background-color: transparent; Transparent background for better integration
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+} */
+
+.edit-todo {
+  /* Edit button styling */
+  color: #007bff;
+  /* Blue */
+}
+
+.delete-todo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 1em; */
+  border: 0px solid transparent;
+  background-color: rgba(100, 77, 237, 0.08);
+  border-radius: 1.25em;
+  transition: all 0.2s linear;
+}
+
+.delete-todo:hover {
+  box-shadow: 3.4px 2.5px 4.9px rgba(0, 0, 0, 0.025),
+    8.6px 6.3px 12.4px rgba(0, 0, 0, 0.035),
+    17.5px 12.8px 25.3px rgba(0, 0, 0, 0.045),
+    36.1px 26.3px 52.2px rgba(0, 0, 0, 0.055),
+    99px 72px 143px rgba(0, 0, 0, 0.08);
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 4em;
+  background-color: rgba(0, 0, 0, 0.253);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 25%;
+  left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgba(0, 0, 0, 0.253) transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+.edit-todo {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+  background-color: rgb(168, 38, 255);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px rgb(140, 32, 212);
+  transition-duration: .3s;
+}
+
+.svg {
+  width: 13px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  fill: white;
+  transition-duration: .3s;
+}
+
+.edit-todo:hover {
+  color: transparent;
+}
+
+.edit-todo:hover svg {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: .3s;
+}
+
+.edit-todo:active {
+  transform: translate(3px, 3px);
+  transition-duration: .3s;
+  box-shadow: 2px 2px 0px rgb(140, 32, 212);
+}
+
+/* .todo-div button:hover {
+
+  background-color: rgba(0, 0, 0, 0.05); 
+} */
+/* .notes-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px;
+  z-index: 1000;
+  overflow: auto;
+  display: none; Initially hidden
+}
+
+.notes-container.hidden {
+  display: none; Hidden when the 'hidden' class is added
+}
+
+.notes-container.visible {
+  display: block; Shown when the 'visible' class is added
+}
+
+
+#notesContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+
+}
+
+#notesContainer.visible {
+  display: block; Shown when the 'visible' class is added
+}
+
+.cancel-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+} */

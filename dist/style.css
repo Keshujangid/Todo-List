@@ -1,11 +1,11 @@
 @font-face {
   font-family: myFonts;
-  src: url(../dist/Fonts/agent-orange/AgentOrange.ttf);
+  src: url(./dist/Fonts/agent-orange/AgentOrange.ttf);
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-image: url(../dist/image/abstract-shapes-background-free-vector.jpg);
+  background-image: url(./dist/image/abstract-shapes-background-free-vector.jpg);
   background-repeat: no-repeat;
   /* Prevents the image from repeating */
   background-size: cover;
